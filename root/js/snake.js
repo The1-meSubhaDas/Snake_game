@@ -3,7 +3,7 @@ const foodSound = new Audio('food.mp3');
 const gameOverSound = new Audio('gameover.mp3');
 const moveSound = new Audio('move.mp3');
 const musicSound = new Audio('music.mp3');
-let speed = 6.1;
+let speed = 9;
 let score = 0;
 let lastPaintTime = 0;
 let snakeArr = [
@@ -44,9 +44,9 @@ function gameEngine(){
         gameOverSound.play();
         musicSound.pause();
         inputDir =  {x: 0, y: 0}; 
-        alert("Game Over. Press any key to play again!");
+        alert("Game Over. Press ok or reload the page to play again!");
         snakeArr = [{x: 13, y: 15}];
-        musicSound.play();
+        // musicSound.play();
         score = 0; 
     }
 
@@ -102,7 +102,6 @@ function gameEngine(){
 
 
 // Main logic starts here
-musicSound.play();
 let hiscore = localStorage.getItem("hiscore");
 if(hiscore === null){
     hiscoreVal = 0;
@@ -116,6 +115,7 @@ window.requestAnimationFrame(main);
 window.addEventListener('keydown', e =>{
     inputDir = {x: 0, y: 1} // Start the game
     moveSound.play();
+    musicSound.play();
     switch (e.key) {
         case "ArrowUp":
             console.log("ArrowUp");
